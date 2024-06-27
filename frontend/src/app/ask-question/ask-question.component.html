@@ -1,0 +1,25 @@
+<div>
+  <h3>Available Tags:</h3>
+  <span *ngFor="let tag of allTags" class="tag">{{ tag.name }}</span>
+</div>
+
+<form (ngSubmit)="submitQuestion()" #questionForm="ngForm">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="question.title" required>
+  </div>
+
+  <div class="form-group">
+    <label for="text">Text:</label>
+    <textarea id="text" name="text" [(ngModel)]="question.text" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags:</label>
+    <input type="text" id="tags" name="tags" [(ngModel)]="tagString">
+  </div>
+
+  <button type="submit" [disabled]="!questionForm.form.valid">Ask Question</button>
+</form>
+
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>

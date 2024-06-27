@@ -1,0 +1,53 @@
+<div *ngIf="question">
+  <h3>Answers</h3>
+
+  <app-answer-form [questionId]="question.id" (answerAdded)="onAnswerAdded($event)"></app-answer-form>
+
+  <div *ngFor="let answer of answers" class="answer">
+    <div class="answer-votes">
+      <button (click)="upvoteAnswer(answer)">Upvote</button>
+      {{ answer.voteCount }}
+      <button (click)="downvoteAnswer(answer)">Downvote</button>
+    </div>
+    <img *ngIf="answer.picture" [src]="answer.picture" alt="Answer Picture" />
+    <p>{{ answer.text }}</p>
+    <p>By: {{ answer.author.name }}</p>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--
+<div *ngIf="question">
+  <h2>{{ question.title }}</h2>
+  <p>{{ question.text }}</p>
+  <p>By: {{ question.author.name }}</p>
+  <p>Tags:
+    <span *ngFor="let tag of question.tags" class="tag">{{ tag.name }}</span>
+  </p>
+  <p>Votes: {{ question.voteCount }}</p>
+
+  <h3>Answers</h3>
+
+  <div *ngFor="let answer of answers" class="answer">
+    <img *ngIf="answer.picture" [src]="answer.picture" alt="Answer Picture" />
+    <p>{{ answer.text }}</p>
+    <p>By: {{ answer.author.name }}</p>
+    <div class="answer-votes">
+      <button (click)="upvoteAnswer(answer)">Upvote</button>
+      {{ answer.voteCount }}
+      <button (click)="downvoteAnswer(answer)">Downvote</button>
+    </div>
+  </div>
+  <app-answer-form [questionId]="question.id" (answerAdded)="onAnswerAdded($event)"></app-answer-form>
+
+  <div>
+    <textarea [(ngModel)]="newAnswerText" placeholder="Your answer..."></textarea>
+    <button (click)="addAnswer()">Add Answer</button>
+  </div>
+</div>
+-->
